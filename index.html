@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mesas Animadas</title>
+<meta name="description" content="Galeria de modelos de painéis de trading animados: Mesa Simulada, Órbita, Horizonte e Mente. Cada um é um HTML único que roda no navegador com dados fictícios.">
+<meta property="og:title" content="Mesas Animadas">
+<meta property="og:description" content="Quatro modelos de painel de trading animado, cada um num HTML único, rodando com dados fictícios.">
+<meta property="og:image" content="https://lucas-reis-diniz.github.io/mesas-animadas/orbita/thumb.jpg">
+<meta name="theme-color" content="#07080d">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+/* Galeria: cabeçalho editorial curto, grade de cartões com prévia grande de cada modelo, notas de uso no fim */
+:root{
+  --bg:#05060a; --panel:#0b0d14; --line:#1b2030; --ink:#eef1f7; --muted:#8a92a8; --dim:#50586c;
+  --magenta:#d42f8c; --gold:#ffc247; --pink:#ff3f72; --violet:#9b6bff; --cyan:#49b3ff;
+  --font-display:'Sora','Segoe UI',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-mono);font-size:14px;line-height:1.6;
+  background-image:radial-gradient(60rem 30rem at 85% -10%,rgba(155,107,255,.16),transparent 60%),radial-gradient(50rem 26rem at -10% 10%,rgba(212,47,140,.12),transparent 60%),radial-gradient(40rem 30rem at 50% 110%,rgba(255,194,71,.08),transparent 60%);background-attachment:fixed}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:44px 56px}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.eyebrow b{color:var(--gold);font-weight:700}
+h1{font-family:var(--font-display);font-weight:800;font-size:clamp(2.5rem,7vw,4.6rem);line-height:1;letter-spacing:-.025em;margin:14px 0 0;text-wrap:balance}
+h1 span{background:linear-gradient(92deg,#ff5fa2 0%,#ffc247 38%,#ffffff 55%,#49b3ff 78%,#9b6bff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{max-width:60ch;color:var(--muted);font-size:15px;margin:18px 0 0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.meta span{font-size:11px;letter-spacing:.06em;border:1px solid var(--line);border-radius:999px;padding:4px 11px;color:var(--muted);background:rgba(255,255,255,.02)}
+.grid{display:grid;gap:22px;grid-template-columns:minmax(0,1fr);margin-top:42px}
+@media (min-width:860px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{--c:#fff;position:relative;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.card:hover,.card:focus-within{transform:translateY(-3px);border-color:var(--c);box-shadow:0 18px 48px -22px var(--c)}
+.shot{display:block;position:relative;aspect-ratio:1200/630;max-width:100%;overflow:hidden;background:#000}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.card:hover .shot img{transform:scale(1.035)}
+.shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(11,13,20,.9));pointer-events:none}
+.live{position:absolute;left:12px;top:12px;z-index:1;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(5,6,10,.72);border:1px solid var(--c);border-radius:4px;padding:3px 8px;display:flex;gap:6px;align-items:center}
+.live i{width:6px;height:6px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c);animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.body{padding:16px 18px 18px;display:grid;gap:10px;flex:1}
+.name{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.name h2{margin:0;font-family:var(--font-display);font-weight:700;font-size:23px;letter-spacing:-.01em}
+.name small{font-size:11px;letter-spacing:.08em;color:var(--c);text-transform:uppercase}
+.body p{margin:0;color:var(--muted);font-size:13.5px;max-width:62ch}
+.tech{display:flex;flex-wrap:wrap;gap:6px}
+.tech span{font-size:10.5px;letter-spacing:.04em;color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:2px 8px;background:rgba(255,255,255,.025)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;align-items:center}
+.btn{font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-radius:6px;padding:9px 14px;border:1px solid var(--c);color:#07080d;background:var(--c)}
+.btn:hover{filter:brightness(1.1)}
+.ghost{font-size:12px;color:var(--muted);text-decoration:none;border-bottom:1px dashed var(--dim)}
+.ghost:hover{color:var(--ink)}
+a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+.how{margin-top:56px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:860px){.how{grid-template-columns:16rem minmax(0,1fr)}}
+.how h3{margin:0;font-family:var(--font-display);font-weight:700;font-size:20px}
+.steps{display:grid;gap:12px}
+.step{display:grid;grid-template-columns:2.2rem minmax(0,1fr);gap:12px;align-items:start;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.015)}
+.step b{font-family:var(--font-display);font-size:18px;color:var(--gold)}
+.step p{margin:0;color:var(--muted);font-size:13.5px}
+.step code{font-family:var(--font-mono);font-size:12.5px;color:var(--ink);background:#121624;border:1px solid var(--line);border-radius:4px;padding:1px 6px}
+footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);color:var(--dim);font-size:12px;display:grid;gap:6px}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion: reduce){.card,.shot img{transition:none}.live i{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow"><b>galeria de modelos</b><span>painéis de trading animados</span><span>dados fictícios</span></div>
+    <h1><span>Mesas Animadas</span></h1>
+    <p class="lede">Quatro modelos de painel de trading que rodam inteiros no navegador, com mercado, book e agentes inventados. Cada um transforma a mesma ideia numa animação diferente. Abra, assista e copie o HTML que quiser como base.</p>
+    <div class="meta"><span>4 modelos</span><span>1 arquivo HTML por modelo</span><span>sem build, sem servidor</span><span>Canvas 2D e WebGL</span></div>
+  </header>
+
+  <main class="grid">
+    <article class="card" style="--c:#ffc247">
+      <a class="shot" href="orbita/" aria-label="Abrir o modelo Órbita"><span class="live"><i></i>ao vivo</span><img src="orbita/thumb.jpg" alt="Buraco negro com disco de acreção dourado e seis agentes em órbita" width="1200" height="630"></a>
+      <div class="body">
+        <div class="name"><h2>Órbita</h2><small>singularidade</small></div>
+        <p>Um buraco negro com disco de acreção, anel de fótons e lente gravitacional. Cada tick cai no horizonte, os seis agentes orbitam em volta e um jato dispara a cada trade.</p>
+        <div class="tech"><span>Canvas 2D</span><span>3.600 partículas no disco</span><span>Monte Carlo de 150 universos</span><span>bloom</span></div>
+        <div class="actions"><a class="btn" href="orbita/">Abrir modelo</a><a class="ghost" href="https://github.com/lucas-reis-diniz/mesas-animadas/blob/main/orbita/index.html">ver o código</a></div>
+      </div>
+    </article>
+
+    <article class="card" style="--c:#ff3f72">
+      <a class="shot" href="horizonte/" aria-label="Abrir o modelo Horizonte"><span class="live"><i></i>ao vivo</span><img src="horizonte/thumb.jpg" alt="Estrada synthwave com sol listrado, prédios neon e seis agentes sobre as faixas" width="1200" height="630"></a>
+      <div class="body">
+        <div class="name"><h2>Horizonte</h2><small>synthwave</small></div>
+        <p>Uma estrada retrô em perspectiva. O sol se põe junto com a janela de 5 minutos, a altura dos prédios vem do book e a faixa central acende em dourado quando aparece edge.</p>
+        <div class="tech"><span>Canvas 2D</span><span>skyline ligado ao book</span><span>espectrograma de 18 sinais</span><span>bloom</span></div>
+        <div class="actions"><a class="btn" href="horizonte/">Abrir modelo</a><a class="ghost" href="https://github.com/lucas-reis-diniz/mesas-animadas/blob/main/horizonte/index.html">ver o código</a></div>
+      </div>
+    </article>
+
+    <article class="card" style="--c:#9b6bff">
+      <a class="shot" href="mente/" aria-label="Abrir o modelo Mente"><span class="live"><i></i>ao vivo</span><img src="mente/thumb.jpg" alt="Nuvem de partículas formando uma gaiola dourada, com cartões de sinal e agentes ligados por linhas" width="1200" height="630" loading="lazy"></a>
+      <div class="body">
+        <div class="name"><h2>Mente</h2><small>partículas</small></div>
+        <p>Cento e vinte mil partículas na GPU que mudam de forma conforme o agente em foco: explosão, gigante gasoso, membrana de células, nebulosa, nó trifólio e gaiola dourada.</p>
+        <div class="tech"><span>WebGL</span><span>120 mil partículas</span><span>mapa de liquidez</span><span>decaimento do edge</span></div>
+        <div class="actions"><a class="btn" href="mente/">Abrir modelo</a><a class="ghost" href="https://github.com/lucas-reis-diniz/mesas-animadas/blob/main/mente/index.html">ver o código</a></div>
+      </div>
+    </article>
+
+    <article class="card" style="--c:#d42f8c">
+      <a class="shot" href="mesa-simulada/" aria-label="Abrir o modelo Mesa Simulada"><span class="live"><i></i>ao vivo</span><img src="mesa-simulada/thumb.jpg" alt="Escritório visto de cima com bots coloridos andando entre as mesas e um telão de velas" width="1200" height="630" loading="lazy"></a>
+      <div class="body">
+        <div class="name"><h2>Mesa Simulada</h2><small>escritório</small></div>
+        <p>Um escritório com oito bots que andam até o telão a cada ciclo. Roda um funil de memecoins com juiz probabilístico, limiares editáveis e uma carteira de paper trading.</p>
+        <div class="tech"><span>Canvas 2D</span><span>funil com limiares</span><span>Monte Carlo de 2.048 futuros</span><span>paper trading</span></div>
+        <div class="actions"><a class="btn" href="mesa-simulada/">Abrir modelo</a><a class="ghost" href="https://github.com/lucas-reis-diniz/mesas-animadas/blob/main/mesa-simulada/index.html">ver o código</a></div>
+      </div>
+    </article>
+  </main>
+
+  <section class="how" aria-label="Como usar os modelos">
+    <h3>Como usar um modelo</h3>
+    <div class="steps">
+      <div class="step"><b>1</b><p>Abra o modelo e use a barra de controles. Nos três modelos de BTC dá para pausar, mudar a velocidade, aprovar cada ticket à mão ou trocar o book para eficiente e ver o edge sumir. Na Mesa Simulada você roda ciclos e aplica ordens fictícias.</p></div>
+      <div class="step"><b>2</b><p>Para reaproveitar, copie a pasta do modelo junto com <code>assets/</code>. Cada página é um <code>index.html</code> sem dependências externas: as fontes e a biblioteca de gráficos já estão em <code>assets/</code>.</p></div>
+      <div class="step"><b>3</b><p>Em Órbita, Horizonte e Mente, os parâmetros ficam no objeto <code>CFG</code> de cada página: edge mínimo, fração de Kelly, teto por ticket, atraso do book e volatilidade. Na Mesa Simulada eles ficam no painel de limiares.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Simulação educativa. Preços, book, agentes e banca são gerados no navegador; nada aqui é dado de mercado real nem recomendação de investimento.</div>
+    <div>Gráficos com <a href="https://github.com/tradingview/lightweight-charts">Lightweight Charts</a> (Apache 2.0) · fontes Sora, JetBrains Mono e Chakra Petch (SIL OFL) · <a href="https://github.com/lucas-reis-diniz/mesas-animadas">código no GitHub</a></div>
+  </footer>
+</div>
+</body>
+</html>
