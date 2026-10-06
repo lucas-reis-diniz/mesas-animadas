@@ -8,7 +8,7 @@ Galeria de modelos de painéis de trading animados. Cada modelo é um `index.htm
 | --- | --- | --- |
 | [Órbita](https://lucas-reis-diniz.github.io/mesas-animadas/orbita/) | Buraco negro com disco de acreção, anel de fótons e lente gravitacional; seis agentes em órbita e um jato a cada trade | Canvas 2D com bloom |
 | [Horizonte](https://lucas-reis-diniz.github.io/mesas-animadas/horizonte/) | Estrada synthwave: o sol se põe com a janela de 5 min, os prédios vêm do book e a faixa central acende com o edge | Canvas 2D com bloom |
-| [Mente](https://lucas-reis-diniz.github.io/mesas-animadas/mente/) | 120 mil partículas que mudam de forma conforme o agente em foco | WebGL |
+| [Mente](https://lucas-reis-diniz.github.io/mesas-animadas/mente/) | 120 mil partículas que giram e se transformam em doze formas, duas por agente, com anéis em órbita | WebGL |
 | [Mesa Simulada](https://lucas-reis-diniz.github.io/mesas-animadas/mesa-simulada/) | Escritório com bots, funil de memecoins com juiz probabilístico e paper trading | Canvas 2D |
 
 ## Como rodar
