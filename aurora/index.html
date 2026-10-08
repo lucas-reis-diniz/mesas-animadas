@@ -957,7 +957,7 @@ try{initGL();glOK=true;}catch(err){glOK=false;}
 sizeAll();if(!glOK)showNoGL();
 if(window.ResizeObserver)new ResizeObserver(()=>sizeAll()).observe(fl);else window.addEventListener('resize',sizeAll);
 candleAll();eqAll();
-log('SPOTTER','início','banca '+usd(S.bank0)+' fictícios · fluido '+(glOK?simW+'×'+simH:'indisponível'));renderWire();
+log('SPOTTER','início','banca '+usd(S.bank0)+' fictícios · fluido '+(glOK?'na GPU':'indisponível'));renderWire();
 requestAnimationFrame(frame);
 })();
 </script>
