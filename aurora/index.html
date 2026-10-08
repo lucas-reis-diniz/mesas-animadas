@@ -729,7 +729,7 @@ function sizeAll(){
   const changed=Math.abs(w/h-flW/flH)>0.02||!vel;
   dpr=Math.min(2,window.devicePixelRatio||1);flW=w;flH=h;
   fl.width=Math.round(w*dpr);fl.height=Math.round(h*dpr);hud.width=Math.round(w*dpr);hud.height=Math.round(h*dpr);hud.style.height=h+'px';
-  if(glOK&&changed){allocFluid();intro();}
+  if(glOK&&changed){try{allocFluid();intro();}catch(err){glOK=false;vel=null;showNoGL();}}
 }
 
 /* passos da simulação */
@@ -915,13 +915,14 @@ function frame(ts){
   if(!document.hidden){
     const si=stageIdx(now);
     if(S.wid!==au.prevWid){if(au.prevWid>0&&glOK&&!au.settled){burst(0.5,0.5,0.07,14,220,[0.3,0.32,0.45],0.0015);pop('sem tickets','janela #'+au.prevWid+' fechou sem posição','#aab2c7');}au.settled=false;au.prevWid=S.wid;}
-    if(glOK){try{const fdt=Math.min(dt,1/30);emit(now,fdt,si);stepFluid(fdt);renderFluid(now);}catch(err){glOK=false;showNoGL();}}
+    if(glOK){if(!vel)sizeAll();if(vel){try{const fdt=Math.min(dt,1/30);emit(now,fdt,si);stepFluid(fdt);renderFluid(now);glErr=0;}catch(err){glFail(err);}}}
     drawHUD(now,si);drawRose(now);drawTide(now);
     if(now-lastUI>140){lastUI=now;renderCommon(now,si);renderAU(now,si);}
     if(now-lastWire>4000){lastWire=now;renderWire();}
   }
   requestAnimationFrame(frame);
 }
+let glErr=0;function glFail(err){glErr++;if(window.console)console.warn('aurora: falha no fluido',err);if(glErr>3){glOK=false;showNoGL();}}
 function showNoGL(){if(!$('nogl'))$('austage').insertAdjacentHTML('beforeend','<div class="nogl" id="nogl">Este navegador não liberou WebGL2 com render em ponto flutuante, que o fluido precisa. O resto da mesa funciona normalmente.</div>');}
 
 /* mexer com o dedo ou o mouse */

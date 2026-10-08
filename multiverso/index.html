@@ -819,7 +819,7 @@ function sizeAll(){
   const w=Math.round(glc.clientWidth),h=Math.round(glc.clientHeight);if(!w||!h)return;
   dpr=Math.min(2,window.devicePixelRatio||1);glW=w;glH=h;
   glc.width=Math.round(w*dpr);glc.height=Math.round(h*dpr);ov.width=Math.round(w*dpr);ov.height=Math.round(h*dpr);ov.style.height=h+'px';
-  if(glOK){sq=Math.min(dpr,1.5);if(scene)scene.del();scene=G.fbo(w*sq,h*sq,G.fmt.rgba,G.gl.LINEAR);bloom.resize(scene.w,scene.h,6);}
+  if(glOK){try{sq=Math.min(dpr,1.5);if(scene)scene.del();scene=null;scene=G.fbo(w*sq,h*sq,G.fmt.rgba,G.gl.LINEAR);bloom.resize(scene.w,scene.h,6);}catch(err){glOK=false;showNoGL();}}
 }
 
 /* ===== layout do gráfico ===== */
@@ -1142,7 +1142,7 @@ function frame(now){
   if(running){acc+=dt*SPEEDS[speedIx];let k=0;while(acc>=1&&k<200){acc-=1;k++;tick(false);}if(k)candleTick();}
   if(!document.hidden){
     stepMV(now,dt);
-    if(glOK){try{drawGL(now);}catch(err){glOK=false;showNoGL();}}
+    if(glOK){if(!scene)sizeAll();if(scene){try{drawGL(now);glErr=0;}catch(err){glFail(err);}}}
     drawOverlay(now);drawLane(now);drawCurve(now);
     if(now-lastUI>140){lastUI=now;const si=stageIdx(now);renderCommon(now,si);renderMV(now,si);drawFall(now);}
     if(now-lastGrid>320){lastGrid=now;stepGrid(now);}
@@ -1151,6 +1151,7 @@ function frame(now){
   }
   requestAnimationFrame(frame);
 }
+let glErr=0;function glFail(err){glErr++;if(window.console)console.warn('multiverso: falha ao desenhar',err);if(glErr>3){glOK=false;showNoGL();}}
 function showNoGL(){if(!$('nogl'))$('mvstage').insertAdjacentHTML('beforeend','<div class="nogl" id="nogl">Este navegador não liberou WebGL2, então o leque aparece numa versão reduzida, com 600 fios. O resto da mesa funciona normalmente.</div>');}
 
 /* ===== controles ===== */
