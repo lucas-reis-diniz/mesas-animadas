@@ -6,6 +6,8 @@ Galeria de modelos de painéis de trading animados. Cada modelo é um `index.htm
 
 | Modelo | O que mostra | Tecnologia |
 | --- | --- | --- |
+| [Multiverso](https://lucas-reis-diniz.github.io/mesas-animadas/multiverso/) | 20.480 futuros do BTC até o fechamento, cada fio colorido por onde pousa; o leque se transforma continuamente e colapsa no fim da janela | WebGL2 em HDR com bloom |
+| [Aurora](https://lucas-reis-diniz.github.io/mesas-animadas/aurora/) | O mercado como fluido: Navier-Stokes na GPU com tinta dos seis agentes, explosões a cada trade e turbulência ligada à volatilidade; dá para mexer com o dedo | WebGL2 com bloom e raios de luz |
 | [Órbita](https://lucas-reis-diniz.github.io/mesas-animadas/orbita/) | Buraco negro com disco de acreção, anel de fótons e lente gravitacional; seis agentes em órbita e um jato a cada trade | Canvas 2D com bloom |
 | [Horizonte](https://lucas-reis-diniz.github.io/mesas-animadas/horizonte/) | Corrida numa estrada synthwave em movimento: cada agente acelera com o próprio sinal e a bandeirada cai no fim da janela de 5 min | Canvas 2D com bloom |
 | [Mente](https://lucas-reis-diniz.github.io/mesas-animadas/mente/) | 120 mil partículas que giram e se transformam em doze formas, duas por agente, com anéis em órbita | WebGL |
@@ -24,6 +26,8 @@ python3 -m http.server 8000
 
 ```
 index.html            galeria
+multiverso/index.html modelo Multiverso
+aurora/index.html     modelo Aurora
 orbita/index.html     modelo Órbita
 horizonte/index.html  modelo Horizonte
 mente/index.html      modelo Mente
@@ -35,7 +39,7 @@ Cada pasta tem um `thumb.jpg` usado na galeria e na prévia de links.
 
 ## Ajustes
 
-Nos modelos de BTC (Órbita, Horizonte e Mente) os parâmetros ficam no objeto `CFG` dentro do script da página:
+Nos modelos de BTC (Multiverso, Aurora, Órbita, Horizonte e Mente) os parâmetros ficam no objeto `CFG` dentro do script da página:
 
 | Campo | Significado |
 | --- | --- |
@@ -48,6 +52,14 @@ Nos modelos de BTC (Órbita, Horizonte e Mente) os parâmetros ficam no objeto `
 | `vol` | volatilidade por segundo do preço simulado |
 
 Na Mesa Simulada os limiares ficam no painel da própria página.
+
+Parâmetros de URL úteis:
+
+| Página | Parâmetro | Efeito |
+| --- | --- | --- |
+| Multiverso | `?fios=4096` | número de fios desenhados (512 a 20.480); a contagem de mundos continua com 20.480 |
+| Multiverso | `?fixo` | desliga a qualidade adaptativa |
+| Aurora | `?q=baixa` | fluido em resolução menor para máquinas fracas |
 
 ## Créditos
 

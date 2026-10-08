@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mesas Animadas</title>
-<meta name="description" content="Galeria de modelos de painéis de trading animados: Mesa Simulada, Órbita, Horizonte e Mente. Cada um é um HTML único que roda no navegador com dados fictícios.">
+<meta name="description" content="Galeria de modelos de painéis de trading animados: Multiverso, Aurora, Órbita, Horizonte, Mente e Mesa Simulada. Cada um é um HTML único que roda no navegador com dados fictícios.">
 <meta property="og:title" content="Mesas Animadas">
-<meta property="og:description" content="Quatro modelos de painel de trading animado, cada um num HTML único, rodando com dados fictícios.">
-<meta property="og:image" content="https://lucas-reis-diniz.github.io/mesas-animadas/orbita/thumb.jpg">
+<meta property="og:description" content="Seis modelos de painel de trading animado, cada um num HTML único, rodando com dados fictícios.">
+<meta property="og:image" content="https://lucas-reis-diniz.github.io/mesas-animadas/multiverso/thumb.jpg">
 <meta name="theme-color" content="#07080d">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/fonts.css">
@@ -75,11 +75,31 @@ footer a{color:var(--muted)}
   <header>
     <div class="eyebrow"><b>galeria de modelos</b><span>painéis de trading animados</span><span>dados fictícios</span></div>
     <h1><span>Mesas Animadas</span></h1>
-    <p class="lede">Quatro modelos de painel de trading que rodam inteiros no navegador, com mercado, book e agentes inventados. Cada um transforma a mesma ideia numa animação diferente. Abra, assista e copie o HTML que quiser como base.</p>
-    <div class="meta"><span>4 modelos</span><span>1 arquivo HTML por modelo</span><span>sem build, sem servidor</span><span>Canvas 2D e WebGL</span></div>
+    <p class="lede">Seis modelos de painel de trading que rodam inteiros no navegador, com mercado, book e agentes inventados. Cada um transforma a mesma ideia numa animação diferente. Abra, assista e copie o HTML que quiser como base.</p>
+    <div class="meta"><span>6 modelos</span><span>1 arquivo HTML por modelo</span><span>sem build, sem servidor</span><span>Canvas 2D, WebGL e WebGL2</span></div>
   </header>
 
   <main class="grid">
+    <article class="card" style="--c:#33e3ff">
+      <a class="shot" href="multiverso/" aria-label="Abrir o modelo Multiverso"><span class="live"><i></i>ao vivo</span><img src="multiverso/thumb.jpg" alt="Leque de milhares de futuros do preço saindo do presente, brancos no núcleo, ciano em cima e rosa embaixo, pousando numa cortina de barras" width="1200" height="630"></a>
+      <div class="body">
+        <div class="name"><h2>Multiverso</h2><small>20.480 futuros</small></div>
+        <p>Quatro vezes por segundo a mesa roda de novo 20.480 futuros do BTC até o fechamento. Cada fio é um mundo, colorido por onde pousa contra o preço a bater; o leque se transforma sem parar e colapsa num só no fim da janela.</p>
+        <div class="tech"><span>WebGL2 em HDR</span><span>20.480 caminhos aleatórios</span><span>profundidade 3D</span><span>bloom</span></div>
+        <div class="actions"><a class="btn" href="multiverso/">Abrir modelo</a><a class="ghost" href="https://github.com/lucas-reis-diniz/mesas-animadas/blob/main/multiverso/index.html">ver o código</a></div>
+      </div>
+    </article>
+
+    <article class="card" style="--c:#5ff5c8">
+      <a class="shot" href="aurora/" aria-label="Abrir o modelo Aurora"><span class="live"><i></i>ao vivo</span><img src="aurora/thumb.jpg" alt="Tinta colorida girando num fluido escuro, soprada por seis agentes em órbita" width="1200" height="630"></a>
+      <div class="body">
+        <div class="name"><h2>Aurora</h2><small>fluido</small></div>
+        <p>O mercado como fluido: uma simulação de Navier-Stokes de verdade na GPU. Cada agente sopra anéis de tinta da sua cor, cada tick empurra o centro, cada compra explode no meio e a volatilidade vira turbulência. Dá para mexer com o dedo.</p>
+        <div class="tech"><span>WebGL2</span><span>Navier-Stokes em tempo real</span><span>raios de luz</span><span>interativo</span></div>
+        <div class="actions"><a class="btn" href="aurora/">Abrir modelo</a><a class="ghost" href="https://github.com/lucas-reis-diniz/mesas-animadas/blob/main/aurora/index.html">ver o código</a></div>
+      </div>
+    </article>
+
     <article class="card" style="--c:#ffc247">
       <a class="shot" href="orbita/" aria-label="Abrir o modelo Órbita"><span class="live"><i></i>ao vivo</span><img src="orbita/thumb.jpg" alt="Buraco negro com disco de acreção dourado e seis agentes em órbita" width="1200" height="630"></a>
       <div class="body">
@@ -124,9 +144,9 @@ footer a{color:var(--muted)}
   <section class="how" aria-label="Como usar os modelos">
     <h3>Como usar um modelo</h3>
     <div class="steps">
-      <div class="step"><b>1</b><p>Abra o modelo e use a barra de controles. Nos três modelos de BTC dá para pausar, mudar a velocidade, aprovar cada ticket à mão ou trocar o book para eficiente e ver o edge sumir. Na Mesa Simulada você roda ciclos e aplica ordens fictícias.</p></div>
+      <div class="step"><b>1</b><p>Abra o modelo e use a barra de controles. Nos cinco modelos de BTC dá para pausar, mudar a velocidade, aprovar cada ticket à mão ou trocar o book para eficiente e ver o edge sumir. Na Mesa Simulada você roda ciclos e aplica ordens fictícias.</p></div>
       <div class="step"><b>2</b><p>Para reaproveitar, copie a pasta do modelo junto com <code>assets/</code>. Cada página é um <code>index.html</code> sem dependências externas: as fontes e a biblioteca de gráficos já estão em <code>assets/</code>.</p></div>
-      <div class="step"><b>3</b><p>Em Órbita, Horizonte e Mente, os parâmetros ficam no objeto <code>CFG</code> de cada página: edge mínimo, fração de Kelly, teto por ticket, atraso do book e volatilidade. Na Mesa Simulada eles ficam no painel de limiares.</p></div>
+      <div class="step"><b>3</b><p>Em Multiverso, Aurora, Órbita, Horizonte e Mente, os parâmetros ficam no objeto <code>CFG</code> de cada página: edge mínimo, fração de Kelly, teto por ticket, atraso do book e volatilidade. Na Mesa Simulada eles ficam no painel de limiares.</p></div>
     </div>
   </section>
 
